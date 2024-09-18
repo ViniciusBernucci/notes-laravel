@@ -8,21 +8,37 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
 
-    public function login () {
+    public function login()
+    {
         return view('login');
     }
 
-    public function logout() {
+    public function logout()
+    {
         echo "logout";
     }
 
-    public function loginSubmit(Request $request) {
+    public function loginSubmit(Request $request)
+    {
 
-        echo 'login submit';
+        //Validação de formulário
+        $request->validate(
+            [
+                'text_username' => 'required',
+                'text_password' => 'required'
+            ]
+        );
+
+        //get user input
+        $username = $request->input('text_username');
+        $password = $request->input('text_password');
+
+        echo 'ok';
+
+
+        // dd($request);  //var_dump + die
+
+
+
     }
-
-
-
-
-
 }
